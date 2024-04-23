@@ -6,11 +6,11 @@
     <link href="/css/style.css" rel="stylesheet">
 </head>
 <body>
-<div class="mask d-flex align-items-center h-100 background">
+<div class="d-flex align-items-center background general-height">
     <div class="container">
         <div class="row d-flex justify-content-center align-items-center">
             <div class="col-12 col-md-9 col-lg-7 col-xl-6">
-                <div class="card" style="border-radius: 15px;">
+                <div class="card round-card">
                     <div class="card-body p-5">
                         <h5 class="mb-3 pb-3 text-center">Oops! Something went wrong.</h5>
                         <p class="text-center text-muted mt-4 mb-0">
