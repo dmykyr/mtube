@@ -49,6 +49,7 @@ body {
     background-image: url("../background.jpg");
     background-size: cover;
     background-attachment: fixed;
+    height: 88vh;
 }
 
 .profile-card {
@@ -56,9 +57,21 @@ body {
     backdrop-filter: blur(60px);
 }
 
-/*Music */
+/* Music */
 
 .music-list {
     max-height: 56vh;
     overflow-y: auto;
+}
+
+.artist-title{
+    color: #3949ab;
+}
+
+.music-title{
+    color: #1a237e;
+}
+
+.music-item-card-bg{
+    background: rgba(255, 255, 255, 0.8);
 }

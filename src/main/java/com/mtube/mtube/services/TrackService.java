@@ -15,7 +15,7 @@ public class TrackService implements ITrack {
     ITrackDb repository;
     @Override
     public List<Track> getTracks() {
-        return null;
+        return (List<Track>) repository.findAll();
     }
 
     @Override
@@ -25,7 +25,7 @@ public class TrackService implements ITrack {
 
     @Override
     public Track getTrackById(int id) {
-        return null;
+        return repository.findById(id).orElse(null);
     }
 
     @Override
@@ -51,11 +51,11 @@ public class TrackService implements ITrack {
 
     @Override
     public List<Track> filterTracks(String artist) {
-        return null;
+        return repository.filterTracks(artist);
     }
 
     @Override
     public void deleteTrack(int id) {
-
+        repository.deleteById(id);
     }
 }

@@ -81,4 +81,13 @@ public class TracksController {
         service.changeStatus(trackId, updStatus);
         return new RedirectView("profile");
     }
+
+    @RequestMapping(value = "/delete-track", method = RequestMethod.POST)
+    public RedirectView deleteTrack(
+            Model model,
+            @RequestParam("trackId") int trackId)
+    {
+        service.deleteTrack(trackId);
+        return new RedirectView("profile");
+    }
 }

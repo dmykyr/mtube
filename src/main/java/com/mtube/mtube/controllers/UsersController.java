@@ -33,14 +33,22 @@ public class UsersController {
 
     @RequestMapping("/profile")
     public String profile(Model model, HttpSession session){
-        int userId = (int) session.getAttribute("LoggedId");
+        int userId = 0;
+        try {
+            userId = (int) session.getAttribute("LoggedId");
+        } catch (Exception e) {
+            return "login";
+        }
+
         if (userId != 0){
             User user = userService.getById(userId);
             List<Track> trackList = trackService.getUserTracks(userId);
             model.addAttribute("trackList", trackList);
             model.addAttribute("user", user);
+            return "index";
+        } else {
+            return "login";
         }
-        return "index";
     }
 
     @RequestMapping("/register")
