@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.view.RedirectView;
 
-import java.io.IOException;
 import java.util.Base64;
 import java.util.Date;
 import java.util.List;
@@ -37,18 +36,16 @@ public class UsersController {
         try {
             userId = (int) session.getAttribute("LoggedId");
         } catch (Exception e) {
-            return "login";
+            return "redirect:/errorLogin";
         }
 
-        if (userId != 0){
-            User user = userService.getById(userId);
-            List<Track> trackList = trackService.getUserTracks(userId);
-            model.addAttribute("trackList", trackList);
-            model.addAttribute("user", user);
-            return "index";
-        } else {
-            return "login";
-        }
+        User user = userService.getById(userId);
+        if(user == null) { return "redirect:/error"; }
+
+        List<Track> trackList = trackService.getUserTracks(userId);
+        model.addAttribute("trackList", trackList);
+        model.addAttribute("user", user);
+        return "index";
     }
 
     @RequestMapping("/register")
@@ -65,13 +62,17 @@ public class UsersController {
                 byte[] bytes = avatar.getBytes();
                 String base64 = Base64.getEncoder().encodeToString(bytes);
                 User user = new User(0, email, password, base64, new Date());
-                service.register(user);
-                return new RedirectView("login");
+
+                if(service.register(user)){
+                    return new RedirectView("login");
+                } else {
+                    return  new RedirectView("error");
+                }
             }
             return new RedirectView("register");
         }
         catch (Exception e) {
-            return new RedirectView("register");
+            return new RedirectView("error");
         }
     }
 
@@ -94,7 +95,7 @@ public class UsersController {
             return new RedirectView("register");
         }
         catch (Exception e) {
-            return new RedirectView("register");
+            return new RedirectView("error");
         }
     }
 }

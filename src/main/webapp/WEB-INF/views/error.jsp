@@ -1,4 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
     <title>Error page</title>
@@ -14,11 +15,11 @@
                     <div class="card-body p-5">
                         <h5 class="mb-3 pb-3 text-center">Oops! Something went wrong.</h5>
                         <p class="text-center text-muted mt-4 mb-0">
-                            We're sorry, but something went wrong. We've been notified about this issue and we'll take a look at it shortly.
+                            ${errorMessage}
                         </p>
                         <div class="d-flex justify-content-center mt-4">
-                            <a href="/" class="btn btn-block btn-lg form-submit-btn">
-                                Return to Home
+                            <a href="${redirectUrl}" class="btn btn-block btn-lg form-submit-btn">
+                                ${redirectMessage}
                             </a>
                         </div>
                     </div>
