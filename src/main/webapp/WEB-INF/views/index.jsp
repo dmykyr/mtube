@@ -8,7 +8,7 @@
 </head>
 <body>
 <%@ include file="header.jsp" %>
-<div class="profile-background">
+<div class="profile-background without-header-height">
     <div class="row">
         <div class="container-fluid p-3 profile-card">
             <div class="row">
@@ -22,6 +22,7 @@
             </div>
         </div>
     </div>
+
     <div class="row row-cols-1 row-cols-md-3 g-4 m-2 music-list">
         <c:forEach var="item" items="${trackList}">
             <div class="col">
@@ -48,7 +49,37 @@
                 </div>
             </div>
         </c:forEach>
+
+        <div class="col">
+            <div class="card h-100 shadow-sm rounded d-inline-block music-item-card-bg"
+                 onmouseover="hoverIn(this)" onmouseout="hoverOut(this)">
+                <div class="card-body d-flex justify-content-center align-items-center">
+                    <button class="btn btn-lg btn-primary" onclick="btnAddClick()">+</button>
+                </div>
+            </div>
+        </div>
     </div>
+    <dialog id="addDialog">
+        <h4>Add new track</h4>
+        <form action="addtrack" method="post" enctype="multipart/form-data">
+            <div class="form-group m-2" >
+                <input type="text" name="title" class="form-control" placeholder="Title" />
+            </div>
+            <div class="form-group m-2" >
+                <input type="text" name="artist" class="form-control" placeholder="Artist" />
+            </div>
+            <div class="form-group m-2" >
+                <input type="file" name="audiopath" class="form-control" />
+            </div>
+            <div class="form-group m-2" >
+                <input type="text" name="trackstatus" class="form-control" placeholder="Status" />
+            </div>
+            <div class="form-group d-flex justify-content-between m-2">
+                <input type="submit" name="submit" class="btn btn-warning ml-3" value="Add Track" />
+                <button class="btn btn-md btn-danger mr-3" onclick="btnCloseClick()">Close</button>
+            </div>
+        </form>
+    </dialog>
 </div>
 </body>
 </html>
@@ -57,19 +88,32 @@
     function hoverIn(card) {
         card.style.background = 'rgba(255, 255, 255, 1)';
         var audio = card.querySelector('audio');
-        audio.classList.add('hovered');
+        if(!audio) return;
 
+        audio.classList.add('hovered');
         var style = document.createElement('style');
         style.innerHTML = `
-    .hovered::-webkit-media-controls-panel {
-        background-color: #3949ab;
-    }`;
+        .hovered::-webkit-media-controls-panel {
+            background-color: #3949ab;
+        }`;
         document.head.appendChild(style);
     }
 
     function hoverOut(card) {
         card.style.background = 'rgba(255, 255, 255, 0.8)';
         var audio = card.querySelector('audio');
+        if(!audio) return;
+
         audio.classList.remove('hovered');
+    }
+
+    function btnAddClick(){
+        let form = document.getElementById('addDialog');
+        form.showModal();
+    }
+
+    function btnCloseClick() {
+        let form = document.getElementById('addDialog');
+        form.close()
     }
 </script>

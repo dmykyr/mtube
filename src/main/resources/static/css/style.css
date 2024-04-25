@@ -23,6 +23,11 @@ body {
     height: 100vh;
 }
 
+.without-header-height{
+    height: 88vh;
+}
+
+
 /*Registration + Login */
 
 .background {
@@ -49,7 +54,6 @@ body {
     background-image: url("../background.jpg");
     background-size: cover;
     background-attachment: fixed;
-    height: 88vh;
 }
 
 .profile-card {
