@@ -20,7 +20,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="/list" class="nav-link text-white text-center">
+                        <a href="/" class="nav-link text-white text-center">
                             <i class="fa fa-list fa-2x"></i>
                             <div>List</div>
                         </a>

@@ -33,7 +33,7 @@
                         <h6 class="card-subtitle mb-2 text-muted artist-title">${item.artist}</h6>
                         <audio id="audio${item.id}" src="${item.audiopath}" controls></audio>
                     </div>
-                    <div class="card-footer" style="background: #1a237e; color: #e8eaf6;">
+                    <div class="card-footer music-card-footer-color">
                         <small class="text-muted">Created: ${item.createdAt}</small>
                         <div class="d-flex justify-content-between align-items-center mt-2 mb-0">
                             <form action="change-track-status" method="post" class="d-inline">
