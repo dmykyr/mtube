@@ -36,9 +36,6 @@ public class TracksController {
     @Autowired
     IStorageRepository storageService;
 
-    @Autowired
-    private ResourceLoader resourceLoader;
-
     @RequestMapping("/")
     public String registerForm(Model model){
         List<Track> tracks = service.getTracks("public");
@@ -57,17 +54,14 @@ public class TracksController {
             if(userid == 0) return new RedirectView("login");
             String path = "";
             if(audiopath != null){
-                storageService.saveFile(audiopath, env);
-                Resource resource = resourceLoader.getResource("classpath:static/music");
-                String fileStorageLocation = resource.getFile().getAbsolutePath();
-                path = fileStorageLocation + File.separator + audiopath.getOriginalFilename();
+                path = storageService.saveFile(audiopath);
             }
             Track track = new Track(0, title, artist, userid,path, new Date(), trackstatus);
             service.addTrack(track);
-            return new RedirectView("list");
+            return new RedirectView("/");
         }
         catch(Exception ex){
-            return new RedirectView("list");
+            return new RedirectView("/");
         }
     }
 
