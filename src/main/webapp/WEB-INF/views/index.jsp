@@ -72,7 +72,10 @@
                 <input type="file" name="audiopath" class="form-control" />
             </div>
             <div class="form-group m-2" >
-                <input type="text" name="trackstatus" class="form-control" placeholder="Status" />
+                <select name="trackstatus" class="form-control">
+                    <option value="public">Public</option>
+                    <option value="private">Private</option>
+                </select>
             </div>
             <div class="form-group d-flex justify-content-between m-2">
                 <input type="submit" name="submit" class="btn btn-warning ml-3" value="Add Track" />
