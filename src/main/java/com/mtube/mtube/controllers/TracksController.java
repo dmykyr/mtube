@@ -58,10 +58,10 @@ public class TracksController {
             }
             Track track = new Track(0, title, artist, userid,path, new Date(), trackstatus);
             service.addTrack(track);
-            return new RedirectView("/");
+            return new RedirectView("profile");
         }
         catch(Exception ex){
-            return new RedirectView("/");
+            return new RedirectView("error");
         }
     }
 

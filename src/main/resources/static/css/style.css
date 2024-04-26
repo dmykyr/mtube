@@ -64,8 +64,15 @@ body {
 /* Music */
 
 .music-list {
-    max-height: 56vh;
     overflow-y: auto;
+}
+
+.profile-music-list-height{
+    max-height: 56vh;
+}
+
+.main-music-list-height{
+    max-height: 65vh;
 }
 
 .artist-title{

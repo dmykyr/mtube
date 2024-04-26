@@ -11,7 +11,7 @@
 
 <div class="background without-header-height">
         <div class="container-fluid p-3">
-            <div class="row row-cols-1 row-cols-md-3 g-4 m-1 music-list">
+            <div class="row row-cols-1 row-cols-md-3 g-4 m-1 music-list main-music-list-height">
                 <c:forEach var="item" items="${tracks}">
                     <div class="col">
                         <div class="card h-100 shadow-sm rounded d-inline-block music-item-card-bg"
